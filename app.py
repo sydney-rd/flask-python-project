@@ -47,6 +47,11 @@ def endpoint(id=None):
         new_fruit.save()
         return jsonify({"success": True})
 
+    if request.method == "PUT":
+        body = request.get_json()
+        candy.update(body).where(Candy.id == id).execute()
+        return f"Candy {id} is updated"
+
 
 @app.route("/")
 def index():
