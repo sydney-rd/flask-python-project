@@ -52,6 +52,9 @@ def endpoint(id=None):
         candy.update(body).where(Candy.id == id).execute()
         return f"Candy {id} is updated"
 
+    if request.method == "DELETE":
+        Candy.delete().where(Candy.id == id).execute()
+        return f"Candy {id} is deleted"
 
 @app.route("/")
 def index():
