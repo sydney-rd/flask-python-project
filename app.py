@@ -26,10 +26,14 @@ Candy(name="Sour Straws", flavor="Pink Lemonade", shape="long").save()
 Candy(name="Lollipop", flavor="Rasberry", shape="sphere").save()
 Candy(name="Twix", flavor="chocolate", shape="bites").save()
 Candy(name="Jolly Rancher", flavor="Blue Rasperry", shape="tiny babies").save()
-Candy(name="Chocolate bar", flavor="dark chocolate", shape="bar").save()
+Candy(name="Cookies & Cream Chocolate bar", flavor="oreo chocolate", shape="bar").save()
 
 app = Flask(__name__)
 
 @app.route("/candy/", methods=["GET", "POST"])
 @app.route("/candy/<id>", methods=["GET", "PUT", "DELETE"])
 def endpoint(id=None):
+    if request.method == "GET":
+        if id:
+            return jsonify(model_to_dict(Candy.get(Candy.id == id))
+)
