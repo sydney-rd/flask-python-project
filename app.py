@@ -35,5 +35,21 @@ app = Flask(__name__)
 def endpoint(id=None):
     if request.method == "GET":
         if id:
-            return jsonify(model_to_dict(Candy.get(Candy.id == id))
-)
+            return jsonify(model_to_dict(Candy.get(Candy.id == id)))
+        else:
+            candy_list = []
+            for candy in candy.select():
+                candy_list.append(model_to_dict(candy))
+            return jsonify(candy_list)
+
+    if request.method == "POST":
+        new_fruit = dict_to_model(Candy, request.get_json())
+        new_fruit.save()
+        return jsonify({"success": True})
+
+
+@app.route("/")
+def index():
+    return "I love Candy"
+
+app.run(port = 8000, debug = True)
