@@ -12,7 +12,11 @@ class BaseModel(Model):
     class Meta:
         database = db
 
-class candy(BaseModel):
+class Candy(BaseModel):
     name = CharField()
     flavor = CharField()
     shape = CharField()
+
+db.connect()
+db.drop_tables([Candy])
+db.create_tables([Candy])
