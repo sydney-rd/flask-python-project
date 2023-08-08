@@ -6,7 +6,7 @@ In this project, I have created a new table, Candy, that displays multiple types
 # Routes
 
 * /candy/ can be used for GET and POST endpoints
-* /candy/<id> can be used for GET, PUT, and DELETE endpoints
+* /candy/id can be used for GET, PUT, and DELETE endpoints
 
 # Endpoints
 
